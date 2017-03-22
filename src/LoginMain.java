@@ -3,12 +3,15 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -108,6 +111,28 @@ public class LoginMain extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==b1){
 			DB db=new DB();
+			if(rb1.isSelected()){
+				try {
+					ResultSet rs=db.stmt.executeQuery("SELECT cID, cPW FROM sw3_01.tbl_customer;");
+					while(rs.next()){
+						if(t1.getText().equals(rs.getString("cID"))){
+							if(t2.getText().equals(rs.getString("cPW"))){
+								JOptionPane.showMessageDialog(null, "로그인 완료");
+							}
+							else{
+								JOptionPane.showMessageDialog(null, "없는 회원 입니다.다시 확인하여 주십시오.");
+							}
+						}
+					}
+					JOptionPane.showMessageDialog(null, "없는 회원 입니다.다시 확인하여 주십시오.");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			else if(rb2.isSelected()){
+				JOptionPane.showMessageDialog(null, "로그인 완료");
+			}
 			
 		}
 		else if(e.getSource()==b2){

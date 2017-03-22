@@ -8,7 +8,7 @@ public class DB {
 	public DB(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost","root","1234");		
+			con = DriverManager.getConnection("jdbc:mysql://localhost","user","1234");		
 			stmt = con.createStatement();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
