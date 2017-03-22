@@ -118,6 +118,9 @@ public class LoginMain extends JFrame implements ActionListener{
 						if(t1.getText().equals(rs.getString("cID"))){
 							if(t2.getText().equals(rs.getString("cPW"))){
 								JOptionPane.showMessageDialog(null, "로그인 완료");
+								new MainFrame(rs.getString("cID"));
+								this.dispose();
+								
 							}
 							else{
 								JOptionPane.showMessageDialog(null, "없는 회원 입니다.다시 확인하여 주십시오.");
@@ -131,7 +134,9 @@ public class LoginMain extends JFrame implements ActionListener{
 				}
 			}
 			else if(rb2.isSelected()){
-				JOptionPane.showMessageDialog(null, "로그인 완료");
+				JOptionPane.showMessageDialog(null, "비회원으로 로그인 합니다.");
+				new MainFrame("비회원");
+				this.dispose();
 			}
 			
 		}
