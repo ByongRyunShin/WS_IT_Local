@@ -93,7 +93,7 @@ public class LoginMain extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==rb1){
-			if(!rb1.isSelected()){
+			if(rb1.isSelected()){
 				t1.setEnabled(true);
 				t2.setEnabled(true);
 				t1.setText("");
@@ -107,6 +107,7 @@ public class LoginMain extends JFrame implements ActionListener{
 			t2.setText("000");
 		}
 		else if(e.getSource()==b1){
+			DB db=new DB();
 			
 		}
 		else if(e.getSource()==b2){
